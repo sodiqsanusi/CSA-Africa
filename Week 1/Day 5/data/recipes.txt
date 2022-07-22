@@ -1,0 +1,6 @@
+margherita:tomato mozzarella garlic basil
+tuna:tomato mozzarella tuna onion
+pepperoni:tomato mozzarella pepperoni
+mushroom:tomato mozzarella garlic mushrooms
+four cheese:tomato mozzarella cheddar parmesan gorgonzola
+hawaiian:tomato mozzarella ham pineapple
