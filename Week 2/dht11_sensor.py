@@ -2,7 +2,7 @@ from machine import Pin
 from time import sleep
 import dht
 
-sensor = dht.DHT11(Pin(4))
+sensor = dht.DHT11(Pin(23))
 
 print('Sensing...')
 sleep(2)

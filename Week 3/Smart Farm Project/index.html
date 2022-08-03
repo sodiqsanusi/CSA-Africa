@@ -2,6 +2,7 @@
 
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
     <style>
         body {
             font-family: Arial;
@@ -9,13 +10,15 @@
             margin: 0px auto;
             padding-top: 30px
         }
-        h1{
+
+        h1 {
             padding: .2em;
         }
-        main{
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
+
+        main {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-template-rows: 1fr 1fr;
             align-items: center
         }
 
@@ -68,37 +71,50 @@
             display: flex;
             flex-direction: column;
             width: 90%%;
-            margin: 1em auto;
+            margin: 1em auto
         }
-        aside div, .measurements{
+
+        aside div,
+        .measurements {
             display: flex;
             align-items: center;
             text-align: center;
             background-color: #ccc;
             justify-content: space-around;
         }
-        aside div{
-            border-radius: 5px 5px 0 0;
+
+        aside div {
             background-color: #5BB318;
             color: white;
+            border-radius: 8px 8px 0 0;
         }
-        .measurements{
+
+        .measurements {
             padding: .2em 0;
-        }.measurements p{
+        }.measurements:last-of-type{
+            border-radius: 0 0 8px 8px;
+        }
+
+        .measurements p {
             width: 50%%;
-        }.measurements h4{
+        }
+
+        .measurements h4 {
             width: 30%%;
             text-align: center;
         }
 
         @media (min-width: 500px) {
-            main, aside{
+
+            main,
+            aside {
                 width: 70%%;
                 max-width: 470px;
                 margin: 0 auto;
                 flex-direction: row
             }
-            aside{
+
+            aside {
                 margin: 1em auto;
                 flex-direction: column;
             }
@@ -117,11 +133,22 @@
         </section>
         <section>
             <h2>Farm Lights</h2> <label class="switch"> <input type="checkbox" onchange="toggleCheckbox(this)"
-                    id='lights' %s>
-                <span class="slider"> </span> </label>
+                    id='lights' %s> <span class="slider"> </span>
+            </label>
+        </section>
+        <section>
+            <h2>Farm Doors</h2> <label class="switch"> <input type="checkbox" onchange="toggleCheckbox(this)"
+                    id='door' %s> <span class="slider"> </span>
+            </label>
+        </section>
+        <section>
+            <h2>Animal Feed</h2> <label class="switch"> <input type="checkbox" onchange="toggleCheckbox(this)"
+                    id='feed' %s> <span class="slider"> </span>
+            </label>
         </section>
     </main>
     <aside>
+        <h1>Farm Environmental Readings</h3>
         <div>
             <h3>MEASUREMENT</h3>
             <h3>VALUE</h3>
