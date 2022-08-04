@@ -1,11 +1,11 @@
 import machine, time
-from machine import Pin
+from machine import Pin, PWM
 
 
 __version__ = '0.2.0'
 __author__ = 'Roberto Sánchez'
 __license__ = "Apache License 2.0. https://www.apache.org/licenses/LICENSE-2.0"
-
+0
 class HCSR04:
     
     # echo_timeout_us is based in chip range limit (400cm)
@@ -56,30 +56,24 @@ class HCSR04:
 
 
 intruder_alarm_active = Pin(14, Pin.IN)
-lights = Pin(26, Pin.IN)
 
-ultrasonic = HCSR04(trigger_pin=22, echo_pin=23, echo_timeout_us=1000000)
-led = machine.Pin(15, machine.Pin.OUT)
-buzzer = machine.PWM(machine.Pin(21, machine.Pin.OUT))
-buzzer.freq(4186)
-buzzer.duty(0)
+ultrasonic = HCSR04(trigger_pin=12, echo_pin=13, echo_timeout_us=1000000)
+led = Pin(26, Pin.OUT)
+buzzer = Pin(33, Pin.OUT)
 
 intruder_distance = 7
 
 while True:
     distance = ultrasonic.distance_cm()
     print(intruder_alarm_active.value())
-#     print(lights.value())
     print('Distance:', distance, 'cm')
     if distance <= intruder_distance and intruder_alarm_active.value() == 1:
-        buzzer.duty(512)
+        buzzer.on()
         led.on()
     elif distance <= intruder_distance and intruder_alarm_active.value() == 0:
-        lights = True
-        buzzer.duty(0)
+        buzzer.off()
         led.off()
     else:
-        buzzer.duty(0)
+        buzzer.off()
         led.off()
-    time.sleep_ms(1000)
-feed()   
+    time.sleep_ms(300)
